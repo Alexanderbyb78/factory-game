@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://b6yxi3be4haxf"]
+
+[ext_resource type="Script" uid="uid://u85hodhk17kr" path="res://entities/buildings/automatization/scripts/belt_test.gd" id="1_rw2g4"]
+
+[node name="Node2D" type="Node2D" unique_id=1249113260]
+script = ExtResource("1_rw2g4")
