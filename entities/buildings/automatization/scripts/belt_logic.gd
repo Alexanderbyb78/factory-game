@@ -5,7 +5,7 @@ var distances: PackedByteArray = PackedByteArray()
 var item_ids: PackedByteArray = PackedByteArray()
 var cashed_positions: PackedByteArray = PackedByteArray()
 
-var B: int = 240
+var B: int = 0
 var A: int = 0
 var L: int = 240
 var item_size: int = 16
@@ -14,9 +14,12 @@ var focus : int = -1
 var transfer_offset := 0
 var next_belt : belt_logic_reverse = null
 
+# IT LOOKS LIKE THIS:
+#B ; distances.reversed() ; A
+#|-- B --|-- Предмет 3 --|-- dist[2] --|-- Предмет 2 --|-- dist[1] --|-- Предмет 1 --|-- dist[0] --|-- Предмет 0 --|-- A --|
+
 func _init(Length:int=240, size_of_item:int=16):
 	L = Length
-	B = Length
 	item_size = size_of_item
 
 func add_item(p:int=0, id:int=0) -> void:
@@ -87,7 +90,16 @@ func move_tick() -> void:
 		A -= 1; B += 1
 		if A == 0:
 			focus = 0; cashed_positions.append(L)
-			if is_next: move_tick()
+			if is_next:
+				focus = -1
+				next_belt.add_item(transfer_offset, item_ids[0])
+				cashed_positions.clear()
+				item_ids.remove_at(0)
+				if item_ids.size() > 0:
+					A += distances[0]
+					distances.remove_at(0)
+				else:
+					A = 0; B = 0
 	elif is_next:
 		focus = -1
 		next_belt.add_item(transfer_offset, item_ids[0])

@@ -1,14 +1,13 @@
 [gd_scene format=3 uid="uid://bw7gramankjy1"]
 
-[ext_resource type="Script" uid="uid://ba27sa137jhjv" path="res://main.gd" id="1_ig7tw"]
-[ext_resource type="PackedScene" uid="uid://b6yxi3be4haxf" path="res://entities/buildings/automatization/scenes/belt-test.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://dm7jntbhslnln" path="res://tiles.tscn" id="3_1bvp3"]
+[ext_resource type="Script" uid="uid://dqdmqpafwtch6" path="res://camera_2d.gd" id="3_h2yge"]
 
 [node name="Main" type="Node2D" unique_id=637325648]
-script = ExtResource("1_ig7tw")
-
-[node name="Node2D" parent="." unique_id=1249113260 instance=ExtResource("2_0xm2m")]
-position = Vector2(454, 293)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2127771601]
 position = Vector2(597, 292)
 zoom = Vector2(3.585, 3.585)
+script = ExtResource("3_h2yge")
+
+[node name="Node2D" parent="." unique_id=498961686 instance=ExtResource("3_1bvp3")]

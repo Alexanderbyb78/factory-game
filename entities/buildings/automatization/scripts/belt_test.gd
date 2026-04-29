@@ -3,7 +3,7 @@ extends Node2D
 @export var belt_id := 0
 @export var next_belt_id := 0
 
-@onready var belt : belt_logic_reverse = belt_logic_reverse.new()
+@onready var belt : belt_logic_reverse = belt_logic_reverse.new(240, 4)
 var _overlay : Node2D = Node2D.new()
 
 #var item_textures = [
